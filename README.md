@@ -1,26 +1,26 @@
 # Vue Leafify
 
-Vue Leafify, Vue 3 uygulamaları için Leaflet harita kütüphanesini kolayca kullanmanızı sağlayan güçlü ve esnek bir bileşendir. Composition API ve TypeScript ile tamamen tip güvenli olarak geliştirilmiştir.
+Vue Leafify is a powerful and flexible component that allows you to easily use the Leaflet map library in Vue 3 applications. It is developed with full type safety using Composition API and TypeScript.
 
-## Özellikler
+## Features
 
-- Leaflet haritalarını Vue 3 uygulamalarında kolayca kullanma
-- Duyarlı (responsive) tasarım
-- Marker ekleme, güncelleme ve silme
-- Özel harita katmanları (tile layers) desteği
-- Popup ve tooltip desteği
-- Tam ekran modu
-- Özelleştirilebilir kontroller (zoom, ölçek, vb.)
-- TypeScript ile tam tip desteği
-- Composable API ile modüler kullanım
+- Easy integration of Leaflet maps in Vue 3 applications
+- Responsive design
+- Add, update, and delete markers
+- Custom tile layers support
+- Popup and tooltip support
+- Fullscreen mode
+- Customizable controls (zoom, scale, etc.)
+- Full type support with TypeScript
+- Modular usage with Composable API
 
-## Kurulum
+## Installation
 
 ```bash
 npm install vue-leafify
 ```
 
-## Temel Kullanım
+## Basic Usage
 
 ```vue
 <template>
@@ -35,11 +35,11 @@ import { VueLeafify } from 'vue-leafify'
 </script>
 ```
 
-## Özellikler
+## Features
 
-### Marker Ekleme
+### Adding Markers
 
-Haritaya marker eklemek için `markers` prop'unu kullanabilirsiniz:
+You can use the `markers` prop to add markers to the map:
 
 ```vue
 <template>
@@ -76,9 +76,9 @@ const handleMarkerClick = (markerId: string) => {
 </script>
 ```
 
-### Farklı Harita Katmanları
+### Different Map Layers
 
-Farklı harita katmanları (tile layers) arasında geçiş yapabilirsiniz:
+You can switch between different tile layers:
 
 ```vue
 <template>
@@ -102,9 +102,9 @@ const currentProvider = ref('osm')
 </script>
 ```
 
-### Etkileşimli Harita
+### Interactive Map
 
-Haritaya tıklayarak marker ekleyebilirsiniz:
+You can add markers by clicking on the map:
 
 ```vue
 <template>
@@ -116,8 +116,8 @@ Haritaya tıklayarak marker ekleyebilirsiniz:
   />
   
   <div class="controls">
-    <button @click="clearMarkers">Tüm Markerları Temizle</button>
-    <button @click="fitBoundsToMarkers">Markerları Sığdır</button>
+    <button @click="clearMarkers">Clear All Markers</button>
+    <button @click="fitBoundsToMarkers">Fit to Markers</button>
   </div>
 </template>
 
@@ -152,9 +152,9 @@ const fitBoundsToMarkers = () => {
 </script>
 ```
 
-### Harita Kontrolleri
+### Map Controls
 
-Harita kontrollerini özelleştirebilirsiniz:
+You can customize map controls:
 
 ```vue
 <template>
@@ -182,7 +182,7 @@ const controls = reactive({
 
 ## Composable API
 
-Vue Leafify, harita işlemlerini daha modüler hale getirmek için composable'lar sağlar:
+Vue Leafify provides composables to make map operations more modular:
 
 ### useMapControls
 
@@ -192,7 +192,7 @@ import { VueLeafify, useMapControls } from 'vue-leafify'
 
 const mapRef = ref<InstanceType<typeof VueLeafify> | null>(null)
 
-// Map instance'ı oluşturulduktan sonra
+// After the map instance is created
 const { 
   addZoomControl, 
   removeZoomControl, 
@@ -212,7 +212,7 @@ import { VueLeafify, useMarkers } from 'vue-leafify'
 
 const mapRef = ref<InstanceType<typeof VueLeafify> | null>(null)
 
-// Map instance'ı oluşturulduktan sonra
+// After the map instance is created
 const {
   markers,
   selectedMarker,
@@ -234,7 +234,7 @@ import { VueLeafify, useTileLayer } from 'vue-leafify'
 
 const mapRef = ref<InstanceType<typeof VueLeafify> | null>(null)
 
-// Map instance'ı oluşturulduktan sonra
+// After the map instance is created
 const {
   tileLayers,
   activeTileLayer,
@@ -245,69 +245,69 @@ const {
 } = useTileLayer(mapRef.value?.getMap())
 ```
 
-## API Referansı
+## API Reference
 
 ### Props
 
-| Prop | Tip | Varsayılan | Açıklama |
+| Prop | Type | Default | Description |
 |------|-----|------------|----------|
-| options | MapOptions | { center: [51.505, -0.09], zoom: 13 } | Harita yapılandırma seçenekleri |
-| markers | Array<MarkerOptions & { id: string }> | [] | Haritada gösterilecek marker'lar |
-| tileLayer | TileLayerOptions | undefined | Özel harita katmanı yapılandırması |
-| tileLayerProvider | string | 'osm' | Önceden tanımlanmış harita katmanı sağlayıcısı |
-| height | string | '500px' | Harita yüksekliği |
-| width | string | '100%' | Harita genişliği |
-| zoomControl | boolean | true | Zoom kontrolünü göster/gizle |
-| scaleControl | boolean | true | Ölçek kontrolünü göster/gizle |
-| attributionControl | boolean | true | Atıf kontrolünü göster/gizle |
-| fullscreenControl | boolean | true | Tam ekran kontrolünü göster/gizle |
-| loading | boolean | false | Harita yükleniyor durumu |
+| options | MapOptions | { center: [51.505, -0.09], zoom: 13 } | Map configuration options |
+| markers | Array<MarkerOptions & { id: string }> | [] | Markers to display on the map |
+| tileLayer | TileLayerOptions | undefined | Custom tile layer configuration |
+| tileLayerProvider | string | 'osm' | Predefined tile layer provider |
+| height | string | '500px' | Map height |
+| width | string | '100%' | Map width |
+| zoomControl | boolean | true | Show/hide zoom control |
+| scaleControl | boolean | true | Show/hide scale control |
+| attributionControl | boolean | true | Show/hide attribution control |
+| fullscreenControl | boolean | true | Show/hide fullscreen control |
+| loading | boolean | false | Map loading state |
 
 ### Events
 
-| Event | Parametreler | Açıklama |
+| Event | Parameters | Description |
 |-------|-------------|----------|
-| update:center | center: LatLng | Harita merkezi değiştiğinde tetiklenir |
-| update:zoom | zoom: number | Harita zoom seviyesi değiştiğinde tetiklenir |
-| map-ready | map: L.Map | Harita hazır olduğunda tetiklenir |
-| map-click | event: L.LeafletMouseEvent | Haritaya tıklandığında tetiklenir |
-| marker-click | markerId: string, event: L.LeafletMouseEvent | Bir marker'a tıklandığında tetiklenir |
-| marker-drag | markerId: string, event: L.LeafletEvent | Bir marker sürüklendiğinde tetiklenir |
-| marker-dragend | markerId: string, event: L.LeafletEvent | Bir marker sürükleme işlemi bittiğinde tetiklenir |
+| update:center | center: LatLng | Triggered when the map center changes |
+| update:zoom | zoom: number | Triggered when the map zoom level changes |
+| map-ready | map: L.Map | Triggered when the map is ready |
+| map-click | event: L.LeafletMouseEvent | Triggered when the map is clicked |
+| marker-click | markerId: string, event: L.LeafletMouseEvent | Triggered when a marker is clicked |
+| marker-drag | markerId: string, event: L.LeafletEvent | Triggered when a marker is dragged |
+| marker-dragend | markerId: string, event: L.LeafletEvent | Triggered when a marker drag operation ends |
 
 ### Exposed Methods
 
-| Method | Parametreler | Dönüş Değeri | Açıklama |
+| Method | Parameters | Return Value | Description |
 |--------|-------------|--------------|----------|
-| getMap | - | L.Map | Leaflet harita instance'ını döndürür |
-| getCenter | - | L.LatLng | Harita merkezini döndürür |
-| getZoom | - | number | Harita zoom seviyesini döndürür |
-| setView | center: L.LatLngExpression, zoom?: number | - | Harita görünümünü ayarlar |
-| flyTo | center: L.LatLngExpression, zoom?: number, options?: L.ZoomPanOptions | - | Haritayı animasyonlu şekilde belirtilen konuma taşır |
-| invalidateSize | - | - | Harita boyutunu yeniden hesaplar |
-| createMarker | id: string, options: MarkerOptions, popupOptions?: PopupOptions, tooltipOptions?: TooltipOptions | L.Marker | Yeni bir marker oluşturur |
-| updateMarker | id: string, options: Partial<MarkerOptions>, popupOptions?: PopupOptions, tooltipOptions?: TooltipOptions | L.Marker | Var olan bir marker'ı günceller |
-| removeMarker | id: string | - | Bir marker'ı kaldırır |
-| removeAllMarkers | - | - | Tüm marker'ları kaldırır |
-| panToMarker | id: string | - | Haritayı belirtilen marker'a taşır |
-| fitBoundsToMarkers | - | - | Haritayı tüm marker'ları gösterecek şekilde ayarlar |
-| createTileLayer | id: string, options: TileLayerOptions | L.TileLayer | Yeni bir harita katmanı oluşturur |
-| createTileLayerFromProvider | id: string, provider: string | L.TileLayer | Önceden tanımlanmış bir sağlayıcıdan harita katmanı oluşturur |
-| switchTileLayer | id: string | - | Belirtilen harita katmanına geçiş yapar |
+| getMap | - | L.Map | Returns the Leaflet map instance |
+| getCenter | - | L.LatLng | Returns the map center |
+| getZoom | - | number | Returns the map zoom level |
+| setView | center: L.LatLngExpression, zoom?: number | - | Sets the map view |
+| flyTo | center: L.LatLngExpression, zoom?: number, options?: L.ZoomPanOptions | - | Moves the map to the specified location with animation |
+| invalidateSize | - | - | Recalculates the map size |
+| createMarker | id: string, options: MarkerOptions, popupOptions?: PopupOptions, tooltipOptions?: TooltipOptions | L.Marker | Creates a new marker |
+| updateMarker | id: string, options: Partial<MarkerOptions>, popupOptions?: PopupOptions, tooltipOptions?: TooltipOptions | L.Marker | Updates an existing marker |
+| removeMarker | id: string | - | Removes a marker |
+| removeAllMarkers | - | - | Removes all markers |
+| panToMarker | id: string | - | Moves the map to the specified marker |
+| fitBoundsToMarkers | - | - | Adjusts the map to show all markers |
+| createTileLayer | id: string, options: TileLayerOptions | L.TileLayer | Creates a new tile layer |
+| createTileLayerFromProvider | id: string, provider: string | L.TileLayer | Creates a tile layer from a predefined provider |
+| switchTileLayer | id: string | - | Switches to the specified tile layer |
 
-## Geliştirme
+## Development
 
 ```bash
-# Bağımlılıkları yükle
+# Install dependencies
 npm install
 
-# Geliştirme sunucusunu başlat
+# Start development server
 npm run dev
 
-# Kütüphaneyi derle
+# Build the library
 npm run build:lib
 ```
 
-## Lisans
+## License
 
 MIT

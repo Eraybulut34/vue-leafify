@@ -1,6 +1,6 @@
 {
   "name": "vue-leafify",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A powerful and customizable Leaflet map component based on Vue 3",
   "author": "abdullaheraybulut",
   "license": "MIT",
